@@ -1,10 +1,11 @@
 package com.redhat.service.bridge.integration.tests.steps;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.redhat.service.bridge.integration.tests.common.BridgeUtils;
+import com.redhat.service.bridge.integration.tests.resources.ResourceUtils;
 
 import io.cucumber.java.en.Given;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MetricsSteps {
 
@@ -19,7 +20,7 @@ public class MetricsSteps {
     }
 
     private void testMetricAndCount(String metricEndpoint, String metricName, int minimalValue) {
-        String metrics = BridgeUtils.jsonRequestWithAuth()
+        String metrics = ResourceUtils.jsonRequest(BridgeUtils.retrieveAccessToken())
                 .get(metricEndpoint)
                 .then()
                 .extract()
