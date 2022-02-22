@@ -1,5 +1,7 @@
 package com.redhat.service.bridge.integration.tests.common;
 
+import java.util.UUID;
+
 public class Utils {
 
     public static String getSystemProperty(String parameters) {
@@ -7,5 +9,9 @@ public class Utils {
             throw new RuntimeException("Property " + parameters + " was not defined.");
         }
         return System.getProperty(parameters);
+    }
+
+    public static String generateId(String prefix) {
+        return prefix + "-" + UUID.randomUUID().toString().substring(0, 4);
     }
 }

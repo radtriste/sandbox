@@ -42,8 +42,8 @@ public class BridgeResource {
                 .as(BridgeListResponse.class);
     }
 
-    public static void getBridgeListFails(int failStatusCode) {
-        getBridgeListResponse(null)
+    public static void getBridgeListFails(String token, int failStatusCode) {
+        getBridgeListResponse(token)
                 .then()
                 .statusCode(failStatusCode);
     }
